@@ -28,6 +28,13 @@ public class PostResource {
 		return mv;
 	}
 	
-
+	@RequestMapping(value = "/post/{id}" , method = RequestMethod.GET)
+	public ModelAndView getPostDetails(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("postDetails");
+		Post post = postService.findById(id);
+		
+		mv.addObject("post", post);
+		return mv;
+	}
 
 }
